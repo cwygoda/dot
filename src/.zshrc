@@ -14,8 +14,11 @@ setopt PUSHD_SILENT
 # Emacs keybindings
 bindkey -e
 # Use the up and down keys to navigate the history
-bindkey "\e[A" history-beginning-search-backward
-bindkey "\e[B" history-beginning-search-forward
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "\e[A" history-beginning-search-backward-end
+bindkey "\e[B" history-beginning-search-forward-end
 
 # Move to directories without cd
 setopt autocd
