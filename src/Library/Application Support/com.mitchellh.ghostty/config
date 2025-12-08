@@ -1,0 +1,13 @@
+window-height=30
+window-width=110
+
+theme="dracula"
+
+font-family="Hack"
+font-size=14
+font-feature=-liga
+font-thicken=true
+keybind = shift+enter=text:\x1b\r
+
+custom-shader = shaders/cursor_tail.glsl
+custom-shader-animation = always
