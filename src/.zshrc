@@ -1,0 +1,56 @@
+# Enable persistent history
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+
+setopt HIST_SAVE_NO_DUPS
+setopt INC_APPEND_HISTORY
+
+# Configure the push directory stack (most people don't need this)
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+
+# Emacs keybindings
+bindkey -e
+# Use the up and down keys to navigate the history
+bindkey "\e[A" history-beginning-search-backward
+bindkey "\e[B" history-beginning-search-forward
+
+# Move to directories without cd
+setopt autocd
+
+# Initialize completion
+autoload -U compinit; compinit
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+# Set up zoxide to move between folders efficiently
+eval "$(zoxide init zsh)"
+
+# Set up the Starship prompt
+eval "$(starship init zsh)"
+
+### homebrew
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+fpath[1,0]="/opt/homebrew/share/zsh/site-functions";
+eval "$(/usr/bin/env PATH_HELPER_ROOT="/opt/homebrew" /usr/libexec/path_helper -s)"
+[ -z "${MANPATH-}" ] || export MANPATH=":${MANPATH#:}";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+
+### mise
+eval "$(mise activate zsh)"
+
+### aliases
+alias ls="eza"
+alias mc="mc -u"
+alias yolo="claude --dangerously-skip-permissions"
+
+### Golang
+export GOPATH=$HOME/.go
+
+### PATH updates ###
+export PATH="$HOME/.local/bin:$GOPATH/bin:$PATH"
