@@ -9,5 +9,7 @@ font-feature=-liga
 font-thicken=true
 keybind = shift+enter=text:\x1b\r
 
+macos-option-as-alt = left
+
 custom-shader = shaders/cursor_tail.glsl
 custom-shader-animation = always

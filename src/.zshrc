@@ -56,6 +56,24 @@ alias ls="eza"
 alias mc="mc -u"
 alias yolo="claude --dangerously-skip-permissions"
 
+### AWS profile selector using fzf
+aws-profile() {
+  local profile
+  profile=$(grep -E '^\[profile ' ~/.aws/config 2>/dev/null | sed 's/\[profile \(.*\)\]/\1/' | fzf --prompt="AWS Profile: " --height=40% --reverse)
+  if [[ -n "$profile" ]]; then
+    export AWS_PROFILE="$profile"
+    echo "Switched to AWS profile: $profile"
+  fi
+}
+
+# Widget wrapper for keybinding
+_aws-profile-widget() {
+  aws-profile
+  zle reset-prompt
+}
+zle -N _aws-profile-widget
+bindkey '\ea' _aws-profile-widget
+
 ### Golang
 export GOPATH=$HOME/.go
 
