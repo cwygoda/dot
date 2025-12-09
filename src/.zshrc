@@ -26,6 +26,10 @@ setopt autocd
 # Initialize completion
 autoload -U compinit; compinit
 
+# Enable menu selection and highlight current selection
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
 ### homebrew
 export HOMEBREW_PREFIX="/opt/homebrew";
 export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
