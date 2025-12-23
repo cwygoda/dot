@@ -30,3 +30,5 @@
 [delta]
     navigate = true
     dark = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
