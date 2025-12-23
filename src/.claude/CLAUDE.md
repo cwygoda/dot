@@ -32,6 +32,7 @@ The following advanced CLI tools are installed and available:
 
 ## Service tools
 - gh - Github client
+- sentry-cli - Sentry client. Use when being given a https://{subdomain}.sentry.io/issues/{issue-id}/?project={project-id} URL
 
 ## Package management
 - uv - use uv and uvx instead of pip
