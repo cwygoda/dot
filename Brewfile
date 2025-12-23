@@ -24,6 +24,7 @@ brew "hyperfine"             # Command benchmarking
 brew "imagemagick"           # Image manipulation suite
 brew "jpegoptim"             # JPEG optimization
 brew "jq"                    # JSON processor
+brew "k6"                    # Load testing tool
 brew "mas"                   # Mac App Store CLI
 brew "midnight-commander"    # Terminal file manager
 brew "mise"                  # Polyglot runtime manager
