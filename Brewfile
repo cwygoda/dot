@@ -1,3 +1,6 @@
+# Taps
+tap "tw93/tap"
+
 # CLI Tools
 brew "ast-grep"              # Structural code search using AST patterns
 brew "awscli"                # AWS command-line interface
@@ -14,6 +17,7 @@ brew "fzf"                   # Fuzzy finder
 brew "gh"                    # GitHub CLI
 brew "gifsicle"              # GIF manipulation tool
 brew "git-delta"             # Better git diff viewer
+brew "gitleaks"              # Secret detection utlity
 brew "go"                    # Golang
 brew "golangci-lint"         # Golang linter
 brew "helix"                 # Modal text editor
@@ -25,9 +29,11 @@ brew "imagemagick"           # Image manipulation suite
 brew "jpegoptim"             # JPEG optimization
 brew "jq"                    # JSON processor
 brew "k6"                    # Load testing tool
+brew "lefthook"              # Git hooks manager
 brew "mas"                   # Mac App Store CLI
 brew "midnight-commander"    # Terminal file manager
 brew "mise"                  # Polyglot runtime manager
+brew "mole"                  # Mac cleaner tool
 brew "ncdu"                  # Disk usage analyzer
 brew "nnn"                   # Terminal file manager
 brew "optipng"               # PNG optimization
@@ -46,12 +52,14 @@ brew "tree"                  # Directory tree visualization
 brew "universal-ctags"       # Symbol indexing
 brew "watchexec"             # Run commands on file changes
 brew "websocat"              # WebSocket CLI client
+brew "vips"                  # Image processing toolkit
 brew "yq"                    # YAML/TOML processor
 brew "zoxide"                # Smarter cd command
 
 # macOS Apps
 cask "caffeine"              # Prevent display sleep
 cask "claude-code"           # Anthropic's Claude CLI
+cask "ngrok"                 # Reverse proxy, secure introspectable tunnels to localhost
 cask "omnidisksweeper"       # Disk space analyzer
 cask "pearcleaner"           # App uninstaller
 cask "vanilla"               # Menu bar icon manager
