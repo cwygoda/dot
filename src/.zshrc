@@ -107,5 +107,8 @@ if (( ! ${chpwd_functions[(I)_direnv_hook]} )); then
   chpwd_functions=(_direnv_hook $chpwd_functions)
 fi
 
+# PNPM global setup
+export PNPM_HOME="${HOME}/Library/pnpm"
+
 ### PATH updates ###
-export PATH="$HOME/.local/bin:$GOPATH/bin:$PATH"
+export PATH="${HOME}/.local/bin:${GOPATH}/bin:${PNPM_HOME}:$PATH"
