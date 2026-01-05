@@ -1,0 +1,2 @@
+- Video Transcript Downloader (https://github.com/steipete/agent-scripts/blob/main/skills/video-transcript-downloader/SKILL.md)
+- Web browser skill (https://github.com/mitsuhiko/agent-stuff/tree/main/skills/web-browser)
