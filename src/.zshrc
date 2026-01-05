@@ -110,5 +110,8 @@ fi
 # PNPM global setup
 export PNPM_HOME="${HOME}/Library/pnpm"
 
+### mise
+eval "$(mise activate zsh)"
+
 ### PATH updates ###
 export PATH="${HOME}/.local/bin:${GOPATH}/bin:${PNPM_HOME}:$PATH"
