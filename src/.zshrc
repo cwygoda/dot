@@ -115,3 +115,6 @@ eval "$(mise activate zsh)"
 
 ### PATH updates ###
 export PATH="${HOME}/.local/bin:${GOPATH}/bin:${PNPM_HOME}:$PATH"
+
+### Local overrides
+[[ -f "${HOME}/.zshrc.local" ]] && source "${HOME}/.zshrc.local"
