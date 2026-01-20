@@ -92,3 +92,16 @@ find "$SRC_DIR" -type f | while read -r src_file; do
         echo "[LINK] Created symlink: $target_path -> $src_file"
     fi
 done
+
+# Setup local gitconfig if missing
+GITCONFIG_LOCAL="$HOME/.gitconfig.local"
+if [[ ! -e "$GITCONFIG_LOCAL" ]]; then
+    echo ""
+    echo "[SETUP] Creating $GITCONFIG_LOCAL"
+    read -rp "Enter git user.email: " git_email
+    cat > "$GITCONFIG_LOCAL" << EOF
+[user]
+    email = $git_email
+EOF
+    echo "[CREATED] $GITCONFIG_LOCAL"
+fi
