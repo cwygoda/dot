@@ -13,6 +13,7 @@ brew "exiftool"              # Read/write image metadata
 brew "exiv2"                 # Image metadata library and tools
 brew "eza"                   # Modern ls replacement
 brew "fd"                    # Fast find alternative
+brew "ffmpeg-full"           # Video format toolkit
 brew "fzf"                   # Fuzzy finder
 brew "gh"                    # GitHub CLI
 brew "gifsicle"              # GIF manipulation tool
@@ -55,12 +56,14 @@ brew "watchexec"             # Run commands on file changes
 brew "websocat"              # WebSocket CLI client
 brew "vips"                  # Image processing toolkit
 brew "yq"                    # YAML/TOML processor
+brew "yt-dlp"                # Audio/video downloader
 brew "zoxide"                # Smarter cd command
 
 # macOS Apps
 cask "basictex"              # Compact TeX distribution
 cask "caffeine"              # Prevent display sleep
 cask "claude-code"           # Anthropic's Claude CLI
+cask "iina"                  # Modern video player
 cask "ngrok"                 # Reverse proxy, secure introspectable tunnels to localhost
 cask "omnidisksweeper"       # Disk space analyzer
 cask "pearcleaner"           # App uninstaller
