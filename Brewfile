@@ -18,6 +18,7 @@ brew "fzf"                   # Fuzzy finder
 brew "gh"                    # GitHub CLI
 brew "gifsicle"              # GIF manipulation tool
 brew "git-delta"             # Better git diff viewer
+brew "git-lfs"               # git large file support
 brew "gitleaks"              # Secret detection utlity
 brew "go"                    # Golang
 brew "golangci-lint"         # Golang linter
@@ -30,6 +31,7 @@ brew "imagemagick"           # Image manipulation suite
 brew "jpegoptim"             # JPEG optimization
 brew "jq"                    # JSON processor
 brew "k6"                    # Load testing tool
+brew "lazygit"               # git TUI
 brew "lefthook"              # Git hooks manager
 brew "mas"                   # Mac App Store CLI
 brew "midnight-commander"    # Terminal file manager
