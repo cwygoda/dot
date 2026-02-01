@@ -41,6 +41,7 @@ brew "ncdu"                  # Disk usage analyzer
 brew "nnn"                   # Terminal file manager
 brew "optipng"               # PNG optimization
 brew "pandoc"                # Swiss-army knife of markup format conversion
+brew "pinentry-mac"          # Password entry utility
 brew "pngquant"              # PNG compression
 brew "pwgen"                 # Password generator
 brew "ripgrep"               # Fast code search (rg)
@@ -65,8 +66,11 @@ brew "zoxide"                # Smarter cd command
 cask "basictex"              # Compact TeX distribution
 cask "caffeine"              # Prevent display sleep
 cask "claude-code"           # Anthropic's Claude CLI
+cask "font-cascadia-code"    # Cascadia Code font
+cask "font-hack"             # Hack font
 cask "iina"                  # Modern video player
 cask "ngrok"                 # Reverse proxy, secure introspectable tunnels to localhost
+cask "obsidian"              # Markdown note taker
 cask "omnidisksweeper"       # Disk space analyzer
 cask "pearcleaner"           # App uninstaller
 cask "stirling-pdf"          # PDF tools
