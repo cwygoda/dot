@@ -4,7 +4,7 @@ Personal dotfiles managed with symlinks.
 
 ## Structure
 
-```
+```text
 src/           # Dotfiles source (mirrors home directory structure)
 install.sh     # Symlink installer script
 ```
@@ -18,6 +18,7 @@ install.sh     # Symlink installer script
 ```
 
 The script will:
+
 - Create symlinks from `$HOME` to files in `src/`
 - Automatically create parent directories as needed
 - Prompt for git email and create `~/.gitconfig.local` on first run

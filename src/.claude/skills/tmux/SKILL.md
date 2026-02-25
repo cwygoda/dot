@@ -23,7 +23,7 @@ tmux -S "$SOCKET" kill-session -t "$SESSION"                   # clean up
 
 After starting a session ALWAYS tell the user how to monitor the session by giving them a command to copy paste:
 
-```
+```text
 To monitor this session yourself:
   tmux -S "$SOCKET" attach -t claude-lldb
 
@@ -46,8 +46,18 @@ This must ALWAYS be printed right after a session was started and once again at 
 
 ## Finding sessions
 
-- List sessions on your active socket with metadata: `./scripts/find-sessions.sh -S "$SOCKET"`; add `-q partial-name` to filter.
-- Scan all sockets under the shared directory: `./scripts/find-sessions.sh --all` (uses `CLAUDE_TMUX_SOCKET_DIR` or `${TMPDIR:-/tmp}/claude-tmux-sockets`).
+```bash
+# List sessions on your socket
+tmux -S "$SOCKET" list-sessions -F '#{session_name}: #{session_windows} windows (created #{session_created_string})'
+
+# List all panes with details
+tmux -S "$SOCKET" list-panes -a -F '#{session_name}:#{window_index}.#{pane_index} [#{pane_width}x#{pane_height}] #{pane_current_command}'
+
+# Scan all sockets under the shared directory
+for sock in "$SOCKET_DIR"/*.sock; do
+  echo "=== $sock ===" && tmux -S "$sock" list-sessions 2>/dev/null || echo "(dead)"
+done
+```
 
 ## Sending input safely
 
@@ -71,11 +81,22 @@ Some special rules for processes:
 
 ## Synchronizing / waiting for prompts
 
-- Use timed polling to avoid races with interactive tools. Example: wait for a Python prompt before sending code:
-  ```bash
-  ./scripts/wait-for-text.sh -t "$SESSION":0.0 -p '^>>>' -T 15 -l 4000
-  ```
-- For long-running commands, poll for completion text (`"Type quit to exit"`, `"Program exited"`, etc.) before proceeding.
+Use timed polling to avoid races with interactive tools. Inline wait loop (no external script needed):
+
+```bash
+# Wait for a pattern in pane output (e.g. Python '>>>' prompt)
+TARGET="$SESSION":0.0
+PATTERN='^>>>'
+TIMEOUT=15
+INTERVAL=0.5
+END=$(($(date +%s) + TIMEOUT))
+while [ "$(date +%s)" -lt "$END" ]; do
+  tmux -S "$SOCKET" capture-pane -p -J -t "$TARGET" -S -200 | grep -qE "$PATTERN" && break
+  sleep "$INTERVAL"
+done
+```
+
+For long-running commands, poll for completion text (`"Type quit to exit"`, `"Program exited"`, etc.) before proceeding.
 
 ## Interactive tool recipes
 
@@ -88,18 +109,3 @@ Some special rules for processes:
 - Kill a session when done: `tmux -S "$SOCKET" kill-session -t "$SESSION"`.
 - Kill all sessions on a socket: `tmux -S "$SOCKET" list-sessions -F '#{session_name}' | xargs -r -n1 tmux -S "$SOCKET" kill-session -t`.
 - Remove everything on the private socket: `tmux -S "$SOCKET" kill-server`.
-
-## Helper: wait-for-text.sh
-
-`./scripts/wait-for-text.sh` polls a pane for a regex (or fixed string) with a timeout. Works on Linux/macOS with bash + tmux + grep.
-
-```bash
-./scripts/wait-for-text.sh -t session:0.0 -p 'pattern' [-F] [-T 20] [-i 0.5] [-l 2000]
-```
-
-- `-t`/`--target` pane target (required)
-- `-p`/`--pattern` regex to match (required); add `-F` for fixed string
-- `-T` timeout seconds (integer, default 15)
-- `-i` poll interval seconds (default 0.5)
-- `-l` history lines to search from the pane (integer, default 1000)
-- Exits 0 on first match, 1 on timeout. On failure prints the last captured text to stderr to aid debugging.

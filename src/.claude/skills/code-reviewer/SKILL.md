@@ -22,6 +22,7 @@ Perform thorough, structured code reviews with actionable feedback.
 Create descriptive filename: `{context}-review-{YYYY-MM-DD}.md`
 
 Derive context from (priority order):
+
 1. Primary function/class name being reviewed
 2. File name (without extension)
 3. Feature/module name
@@ -46,7 +47,7 @@ Evaluate against these dimensions, noting specific locations:
 
 Write to `.claude/feedback/{filename}.md`:
 
-```markdown
+````markdown
 # Code Review: {Descriptive Title}
 
 **Reviewed:** {YYYY-MM-DD}
@@ -68,31 +69,43 @@ Write to `.claude/feedback/{filename}.md`:
 ```
 
 ## Improvements
+
 {Should fix: performance, maintainability, best practices}
 
 ### {Issue Title}
+
 **Location:** `{file:line}`
 **Current:**
+
 ```{lang}
 {existing}
 ```
+
 **Suggested:**
+
 ```{lang}
 {improved}
 ```
+
 **Why:** {rationale}
 
 ## Minor/Style
+
 {Nice to have: formatting, naming, minor polish}
+
 - {location}: {suggestion}
 
 ## Positive Notes
+
 {Acknowledge good patterns, clever solutions, clean code}
+
 - {observation}
 
 ## Action Items
+
 - [ ] {prioritized fix list}
-```
+
+````
 
 ## Guidelines
 
@@ -103,11 +116,37 @@ Write to `.claude/feedback/{filename}.md`:
 - Acknowledge what's done well
 - Omit sections with no findings (except Summary)
 
+## PR Diff Review Mode
+
+When reviewing a PR or branch diff (not full files), focus only on changed lines:
+
+1. Get the diff:
+
+   ```bash
+   # PR diff
+   gh pr diff <number> --repo owner/repo
+   # Branch diff against base
+   git diff main...HEAD
+   ```
+
+2. Review only added/modified lines — don't critique unchanged surrounding code
+3. Check that removed code doesn't leave dangling references or broken imports
+4. Verify new code integrates correctly with unchanged context (read surrounding lines if needed)
+5. Use filename format: `pr-{number}-review-{YYYY-MM-DD}.md` or `{branch}-review-{YYYY-MM-DD}.md`
+6. Add a **Changes Reviewed** section listing files and hunks covered
+
+Diff-specific review criteria (in addition to standard criteria):
+
+- **Completeness:** Are all necessary files changed? Missing migrations, tests, docs?
+- **Atomicity:** Does the diff represent a single logical change?
+- **Revert safety:** Could this be cleanly reverted if needed?
+
 ## Steps
 
 1. Ensure `.claude/feedback/` exists (create if needed)
-2. Read and understand the code to review
-3. Analyze against review criteria
-4. Write structured feedback to file
-5. Report: filename created, issue counts by severity, top 3 priorities
-6. Offer to discuss findings or help implement fixes
+2. Determine review mode: full file review or diff-based (PR/branch)
+3. Read and understand the code to review
+4. Analyze against review criteria
+5. Write structured feedback to file
+6. Report: filename created, issue counts by severity, top 3 priorities
+7. Offer to discuss findings or help implement fixes

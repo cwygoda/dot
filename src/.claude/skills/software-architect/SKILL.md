@@ -26,6 +26,7 @@ Expert software architecture design and technical specification writing. Transla
 ### 1. Gather Requirements
 
 Understand core business needs, constraints, success criteria. Ask clarifying questions if critical info missing about:
+
 - Scale / performance requirements
 - Budget constraints
 - Timeline
@@ -50,6 +51,7 @@ Understand core business needs, constraints, success criteria. Ask clarifying qu
 ### 4. Document Technical Decisions
 
 For each architectural choice:
+
 - Decision made and rationale
 - Alternatives considered and rejection reasons
 - Trade-offs and implications
@@ -58,6 +60,7 @@ For each architectural choice:
 ### 5. Non-Functional Requirements
 
 Define specifications for:
+
 - Performance benchmarks and SLAs
 - Scalability targets and growth projections
 - Security requirements and compliance
@@ -67,6 +70,7 @@ Define specifications for:
 ### 6. Implementation Roadmap
 
 Phased approach including:
+
 - MVP definition and core features
 - Development phases and milestones
 - Dependencies and critical path
@@ -83,6 +87,7 @@ Phased approach including:
 ## Operational Excellence
 
 Address:
+
 - Monitoring and observability strategy
 - Deployment and CI/CD pipeline design
 - Disaster recovery and backup strategies

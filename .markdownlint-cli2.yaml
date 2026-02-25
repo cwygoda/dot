@@ -1,0 +1,4 @@
+config:
+  MD013: false # line-length — skill files have long code blocks, tables, inline YAML
+  MD025: false # single-h1 — skill files use # for visual sections
+  MD041: false # first-line-h1 — files start with frontmatter or prose

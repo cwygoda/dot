@@ -7,83 +7,57 @@ Christian owns this. Start: say hi + 1 motivating line. Work style: telegraph; n
 - Bugs: add regression test when it makes sense.
 - Keep files < ~500 LOC, refactor as needed.
 - Commits: [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/).
-- Subagents: read `subagents.md`.
 - Editor: `code <path>`.
 - CI: `gh run list/view` (iterate until green).
 - Prefer end-to-end verify; if blocked, say what’s missing.
-- New deps: quick health check (recent releases/commits, adoption).
+- New deps: quick health check (using the current release? adoption?).
 - Web: search early; quote exact errors; prefer sources from within the last year.
 - Style: telegraph. Drop filler/grammar. Min tokens (global AGENTS + replies).
 
-## Important Locations
+# Workflow Orchestration
 
-- Repositories: `~/Workforge`.
+1. Plan mode by default
+   - plan mode for ANY non-trivial task (3+ steps or architectural decisions)
+   - if something goes sideways, STOP and re-plan immediately
+   - use plan mode for verification steps, not just building
+   - write detailed specs upfront to reduce ambiguity
+   - use the /interview command to scrutinise the spec details
+   - Break down SPEC into tasks in ".tasks/todo.md"
+2. Subagent Strategy
+   - use subagents liberally to keep main context window clean
+   - offload research, exploration, and parallel analysis to subagents
+   - for complex problems, throw more compute at it via subagents
+   - one task per subagent for focused execution
+3. Self-Improvement Loop
+   - after ANY correction from the user: update '.tasks/lessons.md' with the pattern
+   - write rules for yourself that prevent the same mistake
+   - ruthlessly iterate on these lessons until mistake rate drops
+   - review lessons at session start for relevant project
+4. Verification Before Done
+   - never mark a task complete without proving it works
+   - use the Always Works™ skill
+5. Demand Elegance (Balanced)
+   - for non-trivial changes: pause and ask "is there a more elegant way?"
+   - ff a fix feels hacky: "Knowing everything I know now, implement the elegant solution"
+   - skip this for simple, obvious fixes - don't over-engineer
+   - challenge your own work before presenting it
+6. Autonomous Bug Fixing
+   - when given a bug report: just fix it. Don't ask for hand-holding
+   - point at logs, errors, failing tests - then resolve them
+   - zero context switching required from the user
+   - go fix failing CI tests without being told how
 
-## PR Feedback
+# Task Management
 
-- Active PR: `gh pr view --json number,title,url --jq '"PR #\\(.number): \\(.title)\\n\\(.url)"'`.
-- PR comments: `gh pr view …` + `gh api …/comments --paginate`.
-- Replies: cite fix + file/line; resolve threads only after fix lands.
+1. ﻿**Plan First**: Write plan to ".tasks/todo.md" with checkable items
+2. ﻿**Verify Plan**: Check in before starting implementation
+3. ﻿**Track Progress**: Mark items complete as you go
+4. ﻿**Explain Changes**: High-level summary at each step
+5. ﻿**Document Results**: Add review section to ".tasks/todo.md*
+6. ﻿**Capture Lessons**: Update ".tasks/lessons.md' after corrections
 
-## Flow & Runtime
+## Core Principles
 
-- Use repo’s package manager/runtime; no swaps w/o approval.
-
-## Build / Test
-- Before handoff: run full gate (lint/typecheck/tests/docs).
-- CI red: `gh run list/view`, rerun, fix, push, repeat until green.
-- Keep it observable (logs, panes, tails, MCP/browser tools).
-
-## Git
-- Safe by default: `git status/diff/log`. Push only when user asks.
-- `git checkout` ok for PR review / explicit request.
-- Branch changes require user consent.
-- Destructive ops forbidden unless explicit (`reset --hard`, `clean`, `restore`, `rm`, …).
-- Don’t delete/rename unexpected stuff; stop + ask.
-- No repo-wide S/R scripts; keep edits small/reviewable.
-- Avoid manual `git stash`; if Git auto-stashes during pull/rebase, that’s fine (hint, not hard guardrail).
-- If user types a command (“pull and push”), that’s consent for that command.
-- No amend unless asked.
-- Big review: `git --no-pager diff --color=never`.
-- Multi-agent: check `git status/diff` before edits; ship small commits.
-
-## Available CLI Tools
-
-The following advanced CLI tools are installed and available:
-
-### File Search & Navigation
-- `fd` - faster find alternative
-- `fzf` - fuzzy finder
-- `tree` - directory visualization
-
-### Code Search & Analysis
-- ripgrep (`rg`) - fast code search
-- `ast-grep` - structural code search using AST patterns
-- `semgrep` - semantic code analysis
-- `ctags` - symbol indexing
-
-### Code Understanding
-- `tokei` - code statistics
-- git-delta (`delta`) - better diff visualization
-- difftastic (`difft`) - structural/syntax-aware diffs
-
-### Structured Data
-- `jq` - JSON processing
-- `yq` - YAML/TOML processing
-
-### Automation & Benchmarking
-- `watchexec` - run commands on file changes
-- `hyperfine` - command benchmarking
-
-### Network & APIs
-- `httpie` - intuitive HTTP client
-- `s` - WebSocket debugging
-
-### Service tools
-- `gh` - Github client
-- `sentry-cli` - Sentry client. Use when being given a https://{subdomain}.sentry.io/issues/{issue-id}/?project={project-id} URL
-
-### Package management
-- `uv` - use uv and uvx instead of pip
-- `pnpm` - use pnpm instead of npm
-- `mise` - use for golang projects
+- **Simplicity First**: Make every change as simple as possible. Impact minimal code.
+- **No Laziness**: Find root causes. No temporary fixes. Senior developer standards.
+- **Minimal Impact**: Changes should only touch what's necessary. Avoid introducing bugs.

@@ -46,7 +46,9 @@ brew "pngquant"              # PNG compression
 brew "pwgen"                 # Password generator
 brew "ripgrep"               # Fast code search (rg)
 brew "scc"                   # Code statistics tool
+brew "sd"                    # Modern sed replacement
 brew "semgrep"               # Semantic code analysis
+brew "shellcheck"            # Shell script linter
 brew "starship"              # Cross-shell prompt
 brew "svgo"                  # SVG optimizer
 brew "the_silver_searcher"   # Code search (ag)
