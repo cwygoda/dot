@@ -7,8 +7,9 @@
 [alias]
     st = status
     co = checkout
-	l = log --pretty=format:%C(yellow)%h\\ %C(green)%G?%C(reset)\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn] --decorate --date=relative
+    l = log --pretty=format:%C(yellow)%h\\ %C(green)%G?%C(reset)\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn] --decorate --date=relative
     t = tag --sort=-creatordate
+    merged = "!f() { base=${1:-main}; git for-each-ref --format='%(refname:short)' refs/heads | grep -v \"^$base$\" | while read b; do [ \"$(git cherry \"$base\" \"$b\" | grep -c '^+')\" -eq 0 ] && echo \"$b\"; done; }; f"
 
 [push]
     default = current
