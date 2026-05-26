@@ -1,6 +1,6 @@
 ---
 name: sentry
-description: "Interact with Sentry using `sentry-cli`. Use for releases, source maps, debug symbols, deploys, cron monitors, and event management. Trigger on any Sentry workflow, source map upload, release management, or crash symbolication task."
+description: "Interact with Sentry using `sentry-cli`. Use for releases, source maps, debug symbols, deploys, cron monitors, issue listing, and event management. Trigger on any Sentry workflow, source map upload, release management, issue triage, or crash symbolication task."
 ---
 
 # Sentry CLI Skill
@@ -150,6 +150,23 @@ sentry-cli monitors check-in <monitor-slug> --status error
 
 # List monitors
 sentry-cli monitors list
+```
+
+## Issues
+
+```bash
+# List unresolved issues for a project
+sentry-cli issues list --project <project-slug>
+
+# Filter by environment
+sentry-cli issues list --project <project-slug> --query "is:unresolved environment:dev"
+
+# Other useful query filters
+# is:unresolved | is:resolved | is:ignored
+# assigned:me | assigned:nobody
+# level:error | level:warning
+# firstSeen:>2026-01-01 | lastSeen:<7d
+# Combine filters: "is:unresolved environment:prod level:error"
 ```
 
 ## Send Events
