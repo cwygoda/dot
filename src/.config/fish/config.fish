@@ -1,3 +1,7 @@
+# The following lines were added by Docker Desktop to add commands to your PATH.
+export PATH="$PATH:/Users/cwygoda/.docker/bin"
+# End of Docker Desktop section.
+
 if status is-interactive
     # Tool integrations
     fzf --fish | source
@@ -28,3 +32,10 @@ if status is-interactive
     # Local overrides
     test -f $HOME/.config/fish/config.local.fish && source $HOME/.config/fish/config.local.fish
 end
+
+# pnpm
+set -gx PNPM_HOME "/Users/cwygoda/Library/pnpm"
+if not string match -q -- "$PNPM_HOME/bin" $PATH
+  set -gx PATH "$PNPM_HOME/bin" $PATH
+end
+# pnpm end
