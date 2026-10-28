@@ -1,15 +1,12 @@
 # Taps
 tap "atlassian/acli"
 tap "dagger/tap"
-tap "daveshanley/vacuum"
 tap "huseyinbabal/tap"
 tap "localstack/tap"
 tap "ohueter/tap"
 tap "sachaos/todoist"
 tap "tako8ki/tap"
 tap "terrastruct/tap"
-tap "tw93/tap"
-tap "umputun/apps"
 
 # CLI Tools
 brew "agent-browser"            # Browser automation CLI for AI agents
@@ -17,7 +14,6 @@ brew "argon2"                   # Password hashing library and CLI utility
 brew "ast-grep"                 # Structural code search using AST patterns
 brew "atlassian/acli/acli"      # Atlassian Cloud CLI
 brew "awscli"                   # AWS command-line interface
-brew "azure-cli"                # Microsoft Azure CLI
 brew "bat"                      # Cat clone with syntax highlighting
 brew "bcrypt"                   # File encryption utility using blowfish
 brew "binaryen"                 # Compiler toolchain for WebAssembly
@@ -85,7 +81,6 @@ brew "optipng"                  # PNG optimization
 brew "pandoc"                   # Markup format conversion
 brew "pinentry-mac"             # Password entry utility
 brew "pngquant"                 # PNG compression
-brew "podman"                   # OCI container and pod manager
 brew "postgresql@18"            # Object-relational database system
 brew "procs"                    # Modern ps replacement written in Rust
 brew "pwgen"                    # Password generator
@@ -114,7 +109,6 @@ brew "tmux"                     # Terminal multiplexer
 brew "tokei"                    # Code statistics
 brew "tree"                     # Directory tree visualization
 brew "trufflehog"               # Find and verify credentials
-brew "umputun/apps/revdiff"     # TUI for reviewing diffs with inline annotations
 brew "universal-ctags"          # Symbol indexing
 brew "vacuum"                   # OpenAPI & Swagger linter
 brew "vips"                     # Image processing toolkit
@@ -148,17 +142,13 @@ cask "inkscape"                 # Vector graphics editor
 cask "itsycal"                  # Menu bar calendar
 cask "keka"                     # File archiver
 cask "kekaexternalhelper"       # Keka as default compressor
-cask "libsk-libfido2-install"   # libsk-libfido2 for macOS Yubikey SSH support
 cask "logseq"                   # Knowledge management platform
 cask "ngrok"                    # Secure tunnels to localhost
 cask "obsidian"                 # Markdown note taker
 cask "omnidisksweeper"          # Disk space analyzer
 cask "pearcleaner"              # App uninstaller
 cask "picview"                  # Picture viewer
-cask "podman-desktop"           # Container management GUI
 cask "qgis"                     # Geographic Information System
 cask "qt-creator"               # IDE for Qt application development
 cask "stirling-pdf"             # PDF tools
-cask "vacuum"                   # OpenAPI linter
 cask "vanilla"                  # Menu bar icon manager
-cask "warp"                     # Rust-based terminal
