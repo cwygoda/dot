@@ -105,6 +105,7 @@ brew "summarize"                # Multi-modal AI content summarizer
 brew "svgo"                     # SVG optimizer
 brew "syncthing"                # Continuous file synchronization
 brew "tako8ki/tap/gobang"       # Cross-platform TUI database management tool
+brew "terminal-notifier"        # macOS notifications CLI
 brew "terrascan"                # IaC compliance and security scanner
 brew "terrastruct/tap/tala"     # Advanced diagram layout engine for D2
 brew "the_silver_searcher"      # Code search (ag)
@@ -140,10 +141,13 @@ cask "font-hack"                # Hack font
 cask "free-ruler"               # Horizontal and vertical rulers
 cask "ghostty"                  # GPU-accelerated terminal emulator
 cask "gimp"                     # Image editor
+cask "handbrake-app"            # Open source video transcoder
 cask "handy"                    # Speech to text application
 cask "iina"                     # Modern video player
 cask "inkscape"                 # Vector graphics editor
 cask "itsycal"                  # Menu bar calendar
+cask "keka"                     # File archiver
+cask "kekaexternalhelper"       # Keka as default compressor
 cask "libsk-libfido2-install"   # libsk-libfido2 for macOS Yubikey SSH support
 cask "logseq"                   # Knowledge management platform
 cask "ngrok"                    # Secure tunnels to localhost
@@ -157,5 +161,4 @@ cask "qt-creator"               # IDE for Qt application development
 cask "stirling-pdf"             # PDF tools
 cask "vacuum"                   # OpenAPI linter
 cask "vanilla"                  # Menu bar icon manager
-cask "visual-studio-code"       # Open-source code editor
 cask "warp"                     # Rust-based terminal
