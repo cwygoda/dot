@@ -32,7 +32,8 @@
 
 [delta]
     navigate = true
-    dark = true
+    # dark = true
+    detect-dark-light = auto
 
 [url "git@github.com:"]
 	insteadOf = https://github.com/
